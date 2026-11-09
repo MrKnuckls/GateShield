@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GateShield — Brand Kit Mockup</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:#0d1117; --surface:#161b22; --border:#30363d;
+    --text:#e6edf3; --muted:#8b949e;
+    --green:#39d353; --amber:#ffb000; --red:#ff5555;
+  }
+  body {
+    background:var(--bg); color:var(--text); line-height:1.5;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased; padding:40px 24px;
+  }
+  .mono { font-family:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  .sec { color:var(--green); font-size:13px; letter-spacing:1px; margin:48px 0 8px; }
+  h1 { font-size:30px; font-weight:700; margin-bottom:4px; }
+  .sub { color:var(--muted); margin-bottom:28px; }
+  h2 { font-size:19px; font-weight:600; margin:24px 0 12px; }
+  .grid { display:grid; gap:16px; }
+  .g3 { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+  .g2 { grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); }
+  .card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:20px; text-align:center;
+  }
+  .card .lbl { color:var(--muted); font-size:12px; margin-top:10px; }
+
+  /* ---- icons ---- */
+  .iconrow { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; }
+  .iconwrap { text-align:center; }
+  .appicon { width:96px; height:96px; border-radius:22px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.5); }
+  .appicon svg { width:58px; height:58px; }
+  .i1 { background:linear-gradient(160deg,#1a2230,#10151d); border:1px solid var(--border); }
+  .i2 { background:linear-gradient(160deg,#39d35333,#0d1117 70%), #10151d; border:1px solid #39d35355; }
+  .i3 { background:linear-gradient(160deg,#39d353,#1a7f34); }
+  .i4 { background:#0d1117; border:1px solid #39d35388; }
+  .iconwrap .nm { color:var(--muted); font-size:12px; margin-top:8px; }
+
+  /* ---- banners ---- */
+  .banner {
+    border-radius:10px; border:1px solid var(--border); padding:26px;
+    display:flex; align-items:center; gap:18px; position:relative; overflow:hidden;
+  }
+  .banner .bl { font-size:26px; font-weight:700; }
+  .banner .bt { color:var(--muted); font-size:13px; }
+  .b1 { background:radial-gradient(ellipse 60% 120% at 80% 0%, #39d35322, transparent), var(--surface); }
+  .b2 { background:linear-gradient(100deg,#0d1117 40%,#12211a); }
+  .b2 .badge { background:#39d35322; color:var(--green); border:1px solid #39d35355; padding:3px 10px; border-radius:20px; font-size:11px; display:inline-block; margin-bottom:6px; }
+  .bmin { width:100%; height:90px; margin-top:12px; display:block; border-radius:8px; border:1px solid var(--border); }
+
+  /* ---- phone mockups ---- */
+  .phone {
+    width:270px; background:#0b0f14; border:1px solid var(--border);
+    border-radius:26px; padding:14px; margin:0 auto;
+  }
+  .screen { background:var(--bg); border-radius:18px; padding:16px; min-height:430px; }
+  .status { display:flex; justify-content:space-between; color:var(--muted); font-size:10px; margin-bottom:14px; }
+  .appname { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+  .appname .mini { width:26px; height:26px; border-radius:7px; background:linear-gradient(160deg,#1a2230,#10151d); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
+  .appname .mini svg { width:16px; height:16px; }
+  .appname b { font-size:15px; }
+  .verdict { border-radius:12px; padding:14px; text-align:center; margin-bottom:12px; }
+  .v-danger { background:#ff555514; border:1px solid #ff555566; }
+  .v-safe { background:#39d35314; border:1px solid #39d35366; }
+  .v-warn { background:#ffb00014; border:1px solid #ffb00066; }
+  .verdict .big { font-size:17px; font-weight:700; }
+  .v-danger .big { color:var(--red); } .v-safe .big { color:var(--green); } .v-warn .big { color:var(--amber); }
+  .verdict .sm { color:var(--muted); font-size:11px; }
+  .inputbox { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px 12px; color:var(--muted); font-size:11px; margin-bottom:10px; }
+  .scanbtn { background:#39d35322; border:1px solid #39d35366; color:var(--green); text-align:center; padding:9px; border-radius:8px; font-size:12px; font-weight:600; }
+  .reason { display:flex; gap:8px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--border); font-size:11px; }
+  .reason:last-child { border-bottom:none; }
+  .reason .dot { width:8px; height:8px; border-radius:50%; margin-top:4px; flex:none; }
+  .d-red { background:var(--red); } .d-amber { background:var(--amber); } .d-green { background:var(--green); }
+  .reason .rt { color:var(--muted); }
+
+  /* ---- website mockup ---- */
+  .site { border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--surface); }
+  .navbar { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); }
+  .navbar .logo { display:flex; align-items:center; gap:8px; font-weight:700; font-size:15px; }
+  .navbar .logo svg { width:20px; height:20px; }
+  .navbar nav { color:var(--muted); font-size:12px; display:flex; gap:16px; }
+  .navbar .cta { background:#39d35322; border:1px solid #39d35366; color:var(--green); padding:6px 14px; border-radius:7px; font-size:12px; font-weight:600; }
+  .hero { text-align:center; padding:44px 20px; background:radial-gradient(ellipse 55% 90% at 50% -10%, #39d3531a, transparent); }
+  .hero h3 { font-size:26px; font-weight:700; margin-bottom:8px; }
+  .hero p { color:var(--muted); font-size:13px; max-width:420px; margin:0 auto 18px; }
+  .scanline { max-width:440px; margin:0 auto; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:8px; display:flex; gap:8px; }
+  .scanline .field { flex:1; background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:8px 12px; color:var(--muted); font-size:11px; text-align:left; }
+  .scanline .go { background:var(--green); color:#0d1117; font-weight:700; border-radius:6px; padding:8px 18px; font-size:12px; }
+  .trust { display:flex; gap:24px; justify-content:center; padding:18px; color:var(--muted); font-size:11px; flex-wrap:wrap; }
+  .trust b { color:var(--green); }
+  .foot { border-top:1px solid var(--border); padding:12px 22px; color:var(--muted); font-size:10px; display:flex; justify-content:space-between; }
+
+  footer { margin-top:60px; color:var(--muted); font-size:11px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="mono sec">/// brand-kit</div>
+  <h1>GateShield</h1>
+  <div class="sub">Every link passes through the gate. Mockup in knuckls.com branding — dark terminal aesthetic, green-gate accent.</div>
+
+  <!-- ICONS -->
+  <div class="mono sec">/// app icons — 4 directions</div>
+  <div class="card">
+    <div class="iconrow">
+      <div class="iconwrap">
+        <div class="appicon i1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.6"><path d="M4 4h16v9a8 8 0 0 1-8 8 8 8 0 0 1-8-8V4z"/><path d="M4 12h16" opacity=".35"/></svg>
+        </div>
+        <div class="nm">A — shield outline</div>
+      </div>
+      <div class="iconwrap">
+        <div class="appicon i2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+        </div>
+        <div class="nm">B — shield + check</div>
+      </div>
+      <div class="iconwrap">
+        <div class="appicon i3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="1.9"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+        </div>
+        <div class="nm">C — solid green</div>
+      </div>
+      <div class="iconwrap">
+        <div class="appicon i4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.7"><path d="M5 5h14M5 19h14" /><path d="M7 5v6a5 5 0 0 0 10 0V5"/><path d="M12 16v3"/><path d="M9 19h6"/></svg>
+        </div>
+        <div class="nm">D — literal gate</div>
+      </div>
+    </div>
+    <div class="lbl mono">My pick: B — shield + check reads at 48px, scans as "protected", green-gate gradient keeps it in family with knuckls.com</div>
+  </div>
+
+  <!-- BANNERS -->
+  <div class="mono sec">/// store banners</div>
+  <div class="grid g2">
+    <div class="banner b1">
+      <div class="appicon i2" style="width:64px;height:64px;border-radius:15px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8" style="width:38px;height:38px"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+      </div>
+      <div>
+        <div class="bl">GateShield</div>
+        <div class="bt">Scan any link. Pass it through the gate.</div>
+      </div>
+    </div>
+    <div class="banner b2">
+      <div>
+        <span class="badge mono">/// scam protection</span>
+        <div class="bl">GateShield <span style="color:var(--green)">—</span> Don't click. Scan first.</div>
+        <div class="bt">URL reputation · phishing heuristics · verdicts you can read</div>
+      </div>
+      <div class="appicon i2" style="width:64px;height:64px;border-radius:15px;margin-left:auto;flex:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8" style="width:38px;height:38px"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+      </div>
+    </div>
+  </div>
+  <svg class="bmin" viewBox="0 0 680 90">
+    <rect width="680" height="90" fill="#161b22"/>
+    <ellipse cx="600" cy="10" rx="200" ry="80" fill="#39d353" opacity="0.08"/>
+    <text x="30" y="42" fill="#e6edf3" font-size="22" font-weight="700" font-family="Segoe UI,sans-serif">GateShield</text>
+    <text x="30" y="64" fill="#8b949e" font-size="12" font-family="Segoe UI,sans-serif">The gate every link has to pass through.</text>
+    <text x="480" y="52" fill="#39d353" font-size="11" font-family="monospace">/// safe  /// caution  /// danger</text>
+  </svg>
+  <div class="lbl mono" style="color:var(--muted);font-size:12px;margin-top:6px;">Bottom: Play Store feature-graphic format (1024×500 cropped preview)</div>
+
+  <!-- APP SCREENS -->
+  <div class="mono sec">/// app screens</div>
+  <div class="grid g3">
+    <div class="phone"><div class="screen">
+      <div class="status mono"><span>9:41</span><span>▮▮▮</span></div>
+      <div class="appname">
+        <div class="mini"><svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div>
+        <b>GateShield</b>
+      </div>
+      <div class="inputbox mono">paste a link or message…</div>
+      <div class="scanbtn mono">RUN SCAN</div>
+      <div style="margin-top:14px;color:var(--muted);font-size:10px;" class="mono">/// recents</div>
+      <div class="reason"><span class="dot d-red"></span><span>bit.ly/xk22f — <span class="rt">danger · 2 flags</span></span></div>
+      <div class="reason"><span class="dot d-green"></span><span>github.com/knuckls — <span class="rt">safe</span></span></div>
+    </div></div>
+
+    <div class="phone"><div class="screen">
+      <div class="status mono"><span>9:41</span><span>▮▮▮</span></div>
+      <div class="appname">
+        <div class="mini"><svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div>
+        <b>Scan result</b>
+      </div>
+      <div class="verdict v-danger">
+        <div class="big">⚠ DANGER</div>
+        <div class="sm mono">paypa1-secure-login.ru</div>
+      </div>
+      <div class="reason"><span class="dot d-red"></span><span><b>Lookalike domain</b><br><span class="rt">"paypa1" ≠ paypal — 1 for l</span></span></div>
+      <div class="reason"><span class="dot d-red"></span><span><b>Fake login page</b><br><span class="rt">password field, 4-day-old domain</span></span></div>
+      <div class="reason"><span class="dot d-amber"></span><span><b>No HTTPS reputation</b><br><span class="rt">domain not in any trust list</span></span></div>
+    </div></div>
+
+    <div class="phone"><div class="screen">
+      <div class="status mono"><span>9:41</span><span>▮▮▮</span></div>
+      <div class="appname">
+        <div class="mini"><svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div>
+        <b>Scan result</b>
+      </div>
+      <div class="verdict v-warn">
+        <div class="big">⚡ CAUTION</div>
+        <div class="sm mono">shop-deals-now.top</div>
+      </div>
+      <div class="reason"><span class="dot d-amber"></span><span><b>New domain</b><br><span class="rt">registered 11 days ago</span></span></div>
+      <div class="reason"><span class="dot d-amber"></span><span><b>Discount pressure</b><br><span class="rt">"act now" language detected</span></span></div>
+      <div class="reason"><span class="dot d-green"></span><span><b>Not on blocklists</b><br><span class="rt">no confirmed reports yet</span></span></div>
+    </div></div>
+  </div>
+
+  <!-- WEBSITE -->
+  <div class="mono sec">/// website mockup — gateshield.knuckls.com</div>
+  <div class="site">
+    <div class="navbar">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#39d353" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+        GateShield
+      </div>
+      <nav class="mono"><span>/// scan</span><span>/// how it works</span><span>/// faq</span><span style="color:var(--green)">/// by knuckls.com</span></nav>
+      <div class="cta">Scan a link</div>
+    </div>
+    <div class="hero">
+      <h3>Don't click it. Scan it first.</h3>
+      <p>Every link passes through the gate. Paste any URL or message — GateShield checks reputation, lookalike domains, phishing patterns, and gives you a verdict in plain English.</p>
+      <div class="scanline">
+        <div class="field mono">https://suspicious-link.example…</div>
+        <div class="go">SCAN</div>
+      </div>
+      <div class="trust">
+        <span><b>3-second</b> verdicts</span>
+        <span><b>No account</b> needed</span>
+        <span><b>Plain-English</b> reasons</span>
+      </div>
+    </div>
+    <div class="foot mono"><span>/// GateShield — a knuckls.com project</span><span>privacy · terms</span></div>
+  </div>
+
+  <footer class="mono">/// GateShield brand-kit mockup v1 — pick icon + direction, then we build the real PWA</footer>
+</div>
+</body>
+</html>

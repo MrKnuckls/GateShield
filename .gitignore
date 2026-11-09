@@ -1,0 +1,3 @@
+assets/*.png.tmp
+*.pyc
+__pycache__/
