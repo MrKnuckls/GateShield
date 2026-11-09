@@ -65,7 +65,8 @@ def main() -> int:
             return 1
 
     ssh("sudo mkdir -p " + REMOTE_DIR
-        + " && sudo chown shaun:shaun " + REMOTE_DIR)
+        + " && sudo chown shaun:shaun " + REMOTE_DIR
+        + " && sudo chown shaun:shaun " + REMOTE_DIR + "/* 2>/dev/null; true")
     subprocess.run(["scp", "-o", "BatchMode=yes", "-q",
                     *[str(REPO / n) for n in FILES],
                     f"{REMOTE_HOST}:{REMOTE_DIR}/"], check=True, timeout=120)
