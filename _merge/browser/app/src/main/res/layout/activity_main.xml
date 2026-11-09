@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="#0d1117">
+
+    <!-- verdict bar (sits BELOW the clock/status bar) -->
+    <TextView android:id="@+id/verdictBar"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="6dp" android:text="🛡 SHIELD READY"
+        android:textSize="12sp" android:textColor="#3fb950"
+        android:fontFamily="monospace" android:background="#161b22"/>
+
+    <!-- tab strip -->
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:background="#161b22" android:gravity="center_vertical">
+        <HorizontalScrollView
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:scrollbars="none">
+            <LinearLayout android:id="@+id/tabStrip"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="2dp"/>
+        </HorizontalScrollView>
+        <TextView android:id="@+id/btnNewTab"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="＋" android:textSize="18sp" android:textColor="#3fb950"
+            android:padding="10dp" android:background="#161b22"/>
+    </LinearLayout>
+
+    <!-- url row -->
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:background="#161b22"
+        android:padding="4dp" android:gravity="center_vertical">
+        <EditText android:id="@+id/urlBox"
+            android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:hint="Search or type a URL" android:inputType="textUri"
+            android:imeOptions="actionGo" android:textSize="14sp"
+            android:textColor="#e6edf3" android:textColorHint="#8b949e"
+            android:background="#1c2129" android:padding="8dp"/>
+        <Button android:id="@+id/btnBack"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="◂" android:backgroundTint="#1c2129" android:textColor="#3fb950"
+            android:minWidth="40dp"/>
+        <Button android:id="@+id/btnOL"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🔑" android:backgroundTint="#1c2129" android:textColor="#e6edf3"
+            android:minWidth="40dp"/>
+        <Button android:id="@+id/btnGear"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="⚙" android:backgroundTint="#1c2129" android:textColor="#e6edf3"
+            android:minWidth="40dp"/>
+        <Button android:id="@+id/btnGo"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="GO" android:backgroundTint="#2ea043" android:textColor="#ffffff"
+            android:minWidth="52dp"/>
+    </LinearLayout>
+
+    <FrameLayout android:id="@+id/tabContainer"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <TextView android:id="@+id/blockScreen"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:visibility="gone" android:background="#0d1117"
+            android:textColor="#f85149" android:textSize="16sp"
+            android:fontFamily="monospace" android:padding="24dp"
+            android:text="⛔ BLOCKED BY GATESHIELD\n\nThis site is a known malicious / scam domain.\n\nTap anywhere or press Back to return."/>
+    </FrameLayout>
+
+    <TextView android:id="@+id/statusLine"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="4dp" android:textSize="11sp" android:textColor="#8b949e"
+        android:fontFamily="monospace" android:background="#161b22"
+        android:text="ad+tracker blocking: ON"/>
+</LinearLayout>

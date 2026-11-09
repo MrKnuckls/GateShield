@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#0d1117"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="14dp" android:text="⚙ GateShield Settings"
+        android:textSize="18sp" android:textColor="#3fb950" android:fontFamily="monospace"
+        android:background="#161b22"/>
+
+    <ScrollView
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PROTECTION" android:textSize="12sp" android:textColor="#8b949e"
+                android:fontFamily="monospace" android:paddingBottom="4dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:background="#161b22" android:padding="12dp"
+                android:gravity="center_vertical">
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Ad + tracker blocking" android:textColor="#e6edf3" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Kills ad networks and trackers before they load" android:textColor="#8b949e" android:textSize="12sp"/>
+                </LinearLayout>
+                <Switch android:id="@+id/swAds"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:background="#161b22" android:padding="12dp"
+                android:layout_marginTop="6dp" android:gravity="center_vertical">
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Malicious site blocking" android:textColor="#e6edf3" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Red block screen for scam/phishing domains" android:textColor="#8b949e" android:textSize="12sp"/>
+                </LinearLayout>
+                <Switch android:id="@+id/swMalware"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="SEARCH ENGINE" android:textSize="12sp" android:textColor="#8b949e"
+                android:fontFamily="monospace" android:paddingTop="16dp" android:paddingBottom="4dp"/>
+
+            <RadioGroup android:id="@+id/rgEngine"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#161b22" android:padding="8dp">
+                <RadioButton android:id="@+id/rbDdg" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="DuckDuckGo (private, recommended)"
+                    android:textColor="#e6edf3" android:buttonTint="#3fb950"/>
+                <RadioButton android:id="@+id/rbBing" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Bing"
+                    android:textColor="#e6edf3" android:buttonTint="#3fb950"/>
+                <RadioButton android:id="@+id/rbGoogle" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Google"
+                    android:textColor="#e6edf3" android:buttonTint="#3fb950"/>
+            </RadioGroup>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="BROWSING DATA" android:textSize="12sp" android:textColor="#8b949e"
+                android:fontFamily="monospace" android:paddingTop="16dp" android:paddingBottom="4dp"/>
+
+            <Button android:id="@+id/btnClear"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Clear cookies + site data" android:backgroundTint="#21262d"
+                android:textColor="#f85149"/>
+
+            <Button android:id="@+id/btnAbout"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="About GateShield" android:backgroundTint="#21262d"
+                android:textColor="#3fb950" android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
