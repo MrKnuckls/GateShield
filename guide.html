@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GateShield — Guide</title>
+<meta name="theme-color" content="#0d1117">
+<link rel="icon" href="icon-192.png">
+<style>
+:root{
+  --bg:#0d1117; --panel:#161b22; --line:#30363d;
+  --txt:#e6edf3; --dim:#8b949e; --green:#39d353; --amber:#ffb000; --red:#ff5555;
+  --mono:'JetBrains Mono',Menlo,Consolas,monospace;
+  --sans:Inter,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 18px 70px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+header img{width:34px;height:34px}
+h1{font-size:20px}h1 span{color:var(--green)}
+h2{font-size:17px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);color:var(--green);font-weight:600}
+p,li{font-size:14.5px;line-height:1.65;color:var(--txt)}
+p{margin-bottom:10px}
+li{margin:4px 0 4px 20px}
+.dim{color:var(--dim)}
+code,.mono{font-family:var(--mono);font-size:13px;color:var(--green)}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc a{color:var(--txt);text-decoration:none;display:block;padding:3px 0;font-size:14px}
+.toc a:hover{color:var(--green)}
+.toc a::before{content:"› ";color:var(--green)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:1px}
+td:first-child{font-family:var(--mono);white-space:nowrap}
+.safe{color:var(--green)}.caution{color:var(--amber)}.danger{color:var(--red)}
+.back{display:inline-block;margin-top:26px;font-family:var(--mono);font-size:13px;color:var(--green)}
+.good{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="icon-192.png" alt=""><h1>Gate<span>Shield</span> — Guide</h1></header>
+
+  <div class="toc">
+    <a href="#start">Getting started</a>
+    <a href="#verdicts">The three verdicts</a>
+    <a href="#checks">What it checks</a>
+    <a href="#limits">What it can't catch</a>
+    <a href="#pwa">Install as an app</a>
+  </div>
+
+  <h2 id="start">Getting started</h2>
+  <p>Paste any link, or a whole suspicious text message / email snippet, into the box and hit <code>SCAN ▸</code> (or <code>Ctrl+Enter</code>). You get a verdict in plain English with the reason for every flag. Nothing you paste is sent anywhere — the checks run entirely inside your browser.</p>
+
+  <h2 id="verdicts">The three verdicts</h2>
+  <table>
+    <tr><th>Verdict</th><th>Meaning</th></tr>
+    <tr><td class="safe">SAFE</td><td>No scam signals found. Still not a guarantee — heuristics can't see intent.</td></tr>
+    <tr><td class="caution">CAUTION</td><td>Several signals. Don't use the link; open the company's real site or app yourself instead.</td></tr>
+    <tr><td class="danger">DANGER</td><td>Multiple strong scam signals. Do not click, do not reply, delete it.</td></tr>
+  </table>
+
+  <h2 id="checks">What it checks</h2>
+  <p><b>In URLs:</b> bare IP-address servers, punycode (lookalike-alphabet domains), imitations of 26 well-known brands (paypal, amazon, your bank, USPS, Steam…), real brand names buried in the path of a different domain, high-abuse domain endings (.top, .xyz, .zip…), link shorteners that hide the destination, direct .exe/.apk downloads, the <code>@</code> URL trick, "secure / verify / login" words in a domain name, unencrypted http, and structural oddities like hyphen-stuffed or over-deep subdomains.</p>
+  <p><b>In messages:</b> the classic hooks — "your account is suspended", a prize you never entered, delivery-fee texts, requests for passwords / OTP codes / card numbers, payment-pressure via Zelle / crypto / wire, artificial urgency ("within 24 hours"), shouting in caps, and it runs every link inside the message through the URL checks.</p>
+
+  <h2 id="limits">What it can't catch</h2>
+  <div class="good">
+    GateShield is <b>pattern recognition, not an oracle</b>. It can't check a live blocklist, look up the domain's age, or verify a certificate — those need server-side lookups and are planned. A brand-new scam site with a squeaky-clean domain and no brand imitation can still pass. The rule stands: <span class="mono">if a message pushes you toward a link with urgency, go to the company's real site yourself instead of clicking.</span>
+  </div>
+
+  <h2 id="pwa">Install as an app</h2>
+  <p><b>Android (Chrome):</b> open the site → tap <b>⋮ menu → Add to Home screen → Install</b>. It launches full-screen like a native app.</p>
+  <p><b>PC (Chrome/Edge):</b> click the <b>install icon</b> in the address bar, or <b>⋮ → Cast, save and share → Install page as app</b>.</p>
+
+  <a class="back" href="index.html">← Back to GateShield</a>
+</div>
+</body>
+</html>
