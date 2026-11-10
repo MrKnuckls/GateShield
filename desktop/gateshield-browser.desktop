@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=GateShield Browser
+Exec=gateshield-browser
+Icon=gateshield
+Categories=Network;WebBrowser;
