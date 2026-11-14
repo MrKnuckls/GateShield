@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GateShield Browser — desktop (Linux/Windows/macOS) with the same shield engine as the Android build."""
+"""OneLock Browser — desktop (Linux/Windows/macOS) with the same shield engine as the Android build."""
 import sys, json, re
 from urllib.parse import urlparse
 from PyQt6.QtCore import Qt, QUrl, QSettings
@@ -67,7 +67,7 @@ SEARCH_NAMES = {0: "DuckDuckGo (private)", 1: "Bing", 2: "Google"}
 class SettingsDialog(QDialog):
     def __init__(self, s: QSettings, parent=None):
         super().__init__(parent); self.s = s
-        self.setWindowTitle("GateShield Settings"); self.setModal(True); self.resize(420, 260)
+        self.setWindowTitle("OneLock Browser Settings"); self.setModal(True); self.resize(420, 260)
         lay = QVBoxLayout(self)
         self.cb_ads = QCheckBox("Ad + tracker blocking"); self.cb_ads.setChecked(s.value("ads", True, type=bool))
         self.cb_mal = QCheckBox("Malicious site blocking"); self.cb_mal.setChecked(s.value("malware", True, type=bool))
@@ -81,7 +81,7 @@ class SettingsDialog(QDialog):
         btn.clicked.connect(self.clear_data)
         lay.addWidget(btn)
         ok = QPushButton("Done"); ok.clicked.connect(self.accept); lay.addWidget(ok)
-        lay.addWidget(QLabel("GateShield Browser — desktop v2.0.0"))
+        lay.addWidget(QLabel("OneLock Browser — desktop v2.0.0"))
     def clear_data(self):
         prof = QWebEngineProfile.defaultProfile()
         prof.clearAllVisitedLinks()
@@ -130,7 +130,7 @@ class BrowserTab(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("GateShield Browser"); self.resize(1200, 800)
+        self.setWindowTitle("OneLock Browser"); self.resize(1200, 800)
         self.s = QSettings("Knuckls", "GateShieldBrowser")
         self.shield = Shield(self.s)
         self.profile = QWebEngineProfile.defaultProfile()
@@ -177,7 +177,7 @@ class MainWindow(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    app.setApplicationName("GateShield Browser")
+    app.setApplicationName("OneLock Browser")
     QWebEngineProfile.defaultProfile().setPersistentCookiesPolicy(QWebEngineProfile.PersistentCookiesPolicy.ForcePersistentCookies)
     w = MainWindow(); w.show()
     sys.exit(app.exec())

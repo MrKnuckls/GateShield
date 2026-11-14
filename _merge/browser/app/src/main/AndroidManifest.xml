@@ -30,6 +30,6 @@
         </activity>
         <activity android:name=".SettingsActivity"
             android:exported="false"
-            android:label="GateShield Settings"/>
+            android:label="OneLock Browser Settings"/>
     </application>
 </manifest>
