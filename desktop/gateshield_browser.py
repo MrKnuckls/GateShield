@@ -2,7 +2,7 @@
 """OneLock Browser — desktop (Linux/Windows/macOS) with the same shield engine as the Android build."""
 import sys, json, re
 from urllib.parse import urlparse
-from PyQt6.QtCore import Qt, QUrl, QSettings
+from PyQt6.QtCore import Qt, QUrl, QSettings, QEventLoop
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt6.QtGui import QAction, QKeySequence, QIcon, QFont, QPalette, QColor
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QToolBar, QLineEdit, QTabWidget,
@@ -87,7 +87,7 @@ class SettingsDialog(QDialog):
         prof.clearAllVisitedLinks()
         for r in [prof.cookieStore()]:
             r.deleteAllCookies()
-        QMessageBox.information(self, "GateShield", "Cookies and site data cleared.")
+        QMessageBox.information(self, "OneLock Browser", "Cookies and site data cleared.")
     def accept(self):
         self.s.setValue("ads", self.cb_ads.isChecked())
         self.s.setValue("malware", self.cb_mal.isChecked())
@@ -124,7 +124,7 @@ class BrowserTab(QWidget):
         if level == "bad":
             self.view.stop()
             self.view.setHtml(f"<body style='background:{BG};color:{RED};font-family:monospace;"
-                              f"display:grid;place-items:center;height:90vh'><h1>⛔ BLOCKED BY GATESHIELD</h1></body>")
+                              f"display:grid;place-items:center;height:90vh'><h1>⛔ BLOCKED BY ONELOCK</h1></body>")
     def on_loaded(self, ok): pass
 
 class MainWindow(QMainWindow):
@@ -178,8 +178,14 @@ class MainWindow(QMainWindow):
 def main():
     app = QApplication(sys.argv)
     app.setApplicationName("OneLock Browser")
+    app.setQuitOnLastWindowClosed(True)
     QWebEngineProfile.defaultProfile().setPersistentCookiesPolicy(QWebEngineProfile.PersistentCookiesPolicy.ForcePersistentCookies)
     w = MainWindow(); w.show()
+    def cleanup():
+        # tear the web engine down so no child/ghost process outlives the window
+        QWebEngineProfile.defaultProfile().deleteLater()
+        app.processEvents(QEventLoop.ExcludeUserInputEvents, 1500)
+    app.aboutToQuit.connect(cleanup)
     sys.exit(app.exec())
 
 if __name__ == "__main__":
